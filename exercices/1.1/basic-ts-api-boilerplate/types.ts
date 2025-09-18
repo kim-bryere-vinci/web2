@@ -9,6 +9,4 @@ interface films {
   imageUrl?: string;
 }
 
-type NewFilm = Omit<films, "id">
-
 export type { films };
