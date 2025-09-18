@@ -15,14 +15,14 @@ const defaultFilms : films[] = [
     {
         id: 1, 
         title: "Friends", 
-        director: "Kim BRYERE", 
-        duration: 120
+        director: "Lauren warren", 
+        duration: 190
     },
     {
         id: 1, 
         title: "It", 
-        director: "Kim BRYERE", 
-        duration: 120
+        director: "J.K Rowling", 
+        duration: 100
     }
 ];
 
@@ -30,7 +30,7 @@ const defaultFilms : films[] = [
  * READ ALL : lire toutes les ressources de la collection
  */
 router.get("/", (_req, res) =>{
-    res.status(200).json(defaultFilms);
+    res.json(defaultFilms);
 });
 
 export default router;

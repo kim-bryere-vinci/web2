@@ -16,7 +16,6 @@ app.use((req, _res, next) =>{
         console.log('GET counter : ${count}')
     }
     next();
-})
-
+});
 
 export default app;
