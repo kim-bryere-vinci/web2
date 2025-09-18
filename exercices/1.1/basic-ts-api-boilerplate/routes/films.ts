@@ -1,12 +1,9 @@
 import { Router } from "express";
 
-import path from"node:path";
-import { serialize, parse } from "../utils/json";
 import { films } from "../types";
 
 const router = Router();
 
-const jsonDbPath = path.join(__dirname, "/../data/pizzas.json");
 
 const defaultFilms : films[] = [
     {
@@ -32,7 +29,7 @@ const defaultFilms : films[] = [
 /**
  * READ ALL : lire toutes les ressources de la collection
  */
-router.get("/", (req, res) =>{
+router.get("/", (_req, res) =>{
     res.status(200).json(defaultFilms);
 });
 
