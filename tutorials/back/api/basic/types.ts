@@ -10,7 +10,7 @@ interface PizzaToUpdate {
 }
 
 type NewPizza = Omit<Pizza, "id">;
-type NewDrink = Omit<Drink, "id">;
+type NewDrink = Omit<Drink, "id">; 
 
 
 
