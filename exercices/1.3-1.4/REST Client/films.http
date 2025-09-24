@@ -1,4 +1,18 @@
 @baseUrl = http://localhost:3000
 
 ###
-GET http://localhost:3000/films HTTP/1.1
+GET http://localhost:3000/films?minimum-duration=110  HTTP/1.1
+
+###
+GET http://localhost:3000/films/4 HTTP/1.1
+
+###
+POST http://localhost:3000/films
+Content-Type: application/json
+
+{
+    "title":"Marvel 1",
+    "director":"John Lorence",
+    "duration":110,
+    "budget":10000
+}

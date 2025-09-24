@@ -1,4 +1,4 @@
-
+type NewFilms = Omit<films, "id">;
 interface films {
   id : number;
   title : string;
@@ -9,4 +9,4 @@ interface films {
   imageUrl?: string;
 }
 
-export type { films };
+export type { films, NewFilms };
