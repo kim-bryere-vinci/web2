@@ -1,0 +1,18 @@
+@baseUrl = http://localhost:3000
+
+###
+GET http://localhost:3000/films?minimum-duration=110  HTTP/1.1
+
+###
+GET http://localhost:3000/films/10 HTTP/1.1
+
+###
+POST http://localhost:3000/films HTTP/1.1
+Content-Type: application/json
+
+{
+    "title":"pauline",
+    "director":"Kim Bryere",
+    "duration":110,
+    "budget":10000
+}
