@@ -89,7 +89,7 @@ router.post("/", (req, res) =>{
 
     for(let i = 0; i < defaultFilms.length; i++){
         if(defaultFilms[i].title.toLowerCase() === title.toLowerCase() && defaultFilms[i].director.toLowerCase() === director.toLowerCase()){
-            return res.sendStatus(400);
+            return res.sendStatus(409);
         } 
     }
 
@@ -107,6 +107,133 @@ router.post("/", (req, res) =>{
     defaultFilms.push(newFilm);
     return res.json(newFilm);
     
+});
+
+router.delete("/:id", (req, res) =>{
+    const id = Number(req.params.id);
+    if(!isNumber(id)) return res.sendStatus(400);
+
+    const index = defaultFilms.findIndex((film) => film.id === id);
+    if(index === -1) return res.sendStatus(404);
+
+    const deleteRest = defaultFilms.splice(index, 1);
+
+    return res.json(deleteRest[0]);
+});
+
+router.patch("/:id", (req, res) =>{
+    const id = Number(req.params.id);
+    
+
+    if(!isNumber(id)) return res.sendStatus(400);
+
+
+    const film = defaultFilms.find((film) => film.id === id);
+    if(!film) return res.sendStatus(404);
+
+    const body: unknown = req.body;
+
+    if(
+        !body || typeof body !== "object" ||
+        ("title" in body && (typeof body.title !== "string")) || 
+        ("director" in body && (typeof body.director !== "string")) || 
+        ("duration" in body && (typeof body.duration !== "number")) ||
+        ("budget" in body && (typeof body.budget !== "number")) ||
+        ("description" in body && (typeof body.description !== "string")) ||
+        ("imageUrl" in body && (typeof body.imageUrl !== "string")) 
+    ) return res.sendStatus(400);
+
+    const {title, director, duration, budget, description, imageUrl} : Partial<NewFilms> = body;
+
+    if(title){
+        film.title = title;
+    }
+    if(director){
+        film.director = director;
+    }
+    if(duration){
+        film.duration = duration;
+    }
+    if(budget){
+        film.budget = budget;
+    }
+    if(description){
+        film.description = description;
+    }
+    if(imageUrl){
+        film.imageUrl = imageUrl;
+    }
+
+    return res.json(film);
+});
+
+router.put("/:id", (req, res) => {
+    const id = Number(req.params.id);
+
+    if(!isNumber(id)) return res.sendStatus(400);
+
+    const body: unknown= req.body;
+    if(
+        !body || typeof body !== "object" ||
+        !("title" in body) || (typeof body.title !== "string" || !body.title.trim()) || 
+        !("director" in body) || (typeof body.director !== "string" || !body.director.trim()) || 
+        !("duration" in body) || (typeof body.duration !== "number" ) ||
+        !("budget" in body) || (typeof body.budget !== "number" ) ||
+        !("description" in body) || (typeof body.description !== "string" || !body.description.trim()) ||
+        !("imageUrl" in body) || (typeof body.imageUrl !== "string" || !body.imageUrl.trim())) {
+        return res.sendStatus(400);
+    }
+    const film = defaultFilms.find((film) => film.id === id);
+
+
+    if(!film){
+         const {title, director, duration, budget, description, imageUrl} = body as NewFilms;
+    
+    
+         if(Number(body.duration) < 0 || Number(body.budget) < 0){
+            return res.sendStatus(400);
+         }
+    
+        for(let i = 0; i < defaultFilms.length; i++){
+             if(defaultFilms[i].title.toLowerCase() === title.toLowerCase() && defaultFilms[i].director.toLowerCase() === director.toLowerCase()){
+                 return res.sendStatus(409);
+             } 
+         }
+
+         const nextId = defaultFilms.reduce((maxId, film) => (film.id > maxId ? film.id : maxId), 0) + 1;
+    
+         const newFilm : films = {
+             id: nextId, 
+             title,
+             director,
+             duration,
+             budget,
+             description,
+             imageUrl
+    
+         };
+    
+         defaultFilms.push(newFilm);
+         return res.json(newFilm);
+     }
+
+    const {title, director, duration, budget, description, imageUrl} = body as{
+        title:string,
+        director:string,
+        duration:number,
+        budget:number,
+        description:string,
+        imageUrl:string
+    };
+
+    film.title = title;
+    film.director = director;
+    film.duration = duration;
+    film.budget = budget;
+    film.description = description;
+    film.imageUrl = imageUrl;
+
+    return res.json(film);
 });
 
 export default router;
