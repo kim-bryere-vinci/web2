@@ -43,6 +43,40 @@ const defaultFilms : films[] = [
  */
 router.get("/", (req, res) =>{
     const durat = Number(req.query['minimum-duration']);
+    const sort = req.query.sort;
+    const sortDuration = req.query.sortDuration;
+
+    if(sortDuration){
+        const films : films[] = [];
+        for(let i = 0; i < defaultFilms.length; i++){
+            films.push(defaultFilms[i]);
+        }
+        films.sort((f1, f2) => {
+            if(f1.duration < f2.duration)
+                return 1;
+            if(f1.duration > f2.duration)
+                return -1;
+            return 0;
+        });
+        return res.json(films);
+    }
+
+    if(sort){
+        const films : films[] = [];
+        for(let i = 0; i < defaultFilms.length; i++){
+            films.push(defaultFilms[i]);
+        }
+        films.sort((f1, f2) => {
+            if(f1.title > f2.title)
+                return 1;
+            
+            if(f1.title < f2.title)
+                return -1;
+            
+            return 0; });
+        return res.json(films);
+    }
+
     if(durat){
         const result : films[] = [];
         if(durat < 0){

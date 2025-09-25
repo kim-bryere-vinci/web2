@@ -4,6 +4,13 @@
 GET http://localhost:3000/films?minimum-duration=110  HTTP/1.1
 
 ###
+GET http://localhost:3000/films?sort=asc  HTTP/1.1
+
+###
+GET http://localhost:3000/films?sortDuration=asc  HTTP/1.1
+
+
+###
 GET http://localhost:3000/films HTTP/1.1
 
 ###
