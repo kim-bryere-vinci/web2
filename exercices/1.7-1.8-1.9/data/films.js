@@ -1,0 +1,1 @@
+[{"id":1,"title":"Harry potter","director":"Kim BRYERE","duration":120},{"id":3,"title":"It","director":"J.K Rowling","duration":100},{"id":4,"title":"It","director":"John lorence","duration":210},{"id":5,"title":"Harry potter 2","director":"Kim BRYERE","duration":120}]
