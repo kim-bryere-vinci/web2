@@ -36,10 +36,11 @@ const defaultFilms : Film[] = [
 ];
 
 function readAllFilms(filtre: string | undefined): Film[]{
+    const films = parse(jsonDbPath, defaultFilms);
     const durat = filtre && filtre.includes("minimum-duration") ? filtre: undefined;
     const sortTitle = filtre && filtre.includes("sortTitle") ? filtre: undefined;
     const sortDuration = filtre && filtre.includes("sortDuration") ? filtre: undefined;
-    const films = parse(jsonDbPath, defaultFilms);
+    
     let filteredFilms: Film [] = [];
 
 
@@ -72,8 +73,8 @@ function createFilm(newFilm: NewFilms): Film | undefined{
     const lastId = films[films.length-1].id;
 
     const film: Film = {id: lastId +1,...newFilm};
-    const updatesFilms = [...films, film];
-    serialize(jsonDbPath, updatesFilms);
+    films.push(film);
+    serialize(jsonDbPath, films);
 
     return film;
 }
@@ -117,11 +118,7 @@ function updateOrCreateOne(id: number, update: NewFilms): Film | undefined{
           return createFilm(update);
         }
       
-        const film = { ...films[index], ...update };
-      
-        films[index] = film;
-        serialize(jsonDbPath, films);
-      
+        const film = updateFilm(id, update);
         return film;
 }
 

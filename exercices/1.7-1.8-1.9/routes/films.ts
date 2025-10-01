@@ -58,6 +58,7 @@ router.post("/", (req, res) =>{
     if(Number(corps.duration) < 0){
         return res.sendStatus(400);
     }
+    if(film == undefined) return res.sendStatus(400);
 
     return res.json(film);
     

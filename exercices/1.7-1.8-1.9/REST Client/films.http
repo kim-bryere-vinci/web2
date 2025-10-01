@@ -27,7 +27,7 @@ Content-Type: application/json
 }
 
 ###
-DELETE {{baseUrl}}/films/2 HTTP/1.1
+DELETE {{baseUrl}}/films/1 HTTP/1.1
 
 ###
 PATCH  {{baseUrl}}/films/1 HTTP/1.1
@@ -43,7 +43,7 @@ Content-Type: application/json
 
 {
     "title":"Queen of tears",
-    "director":"Kim Bryere",
+    "director":"Kim d",
     "duration":120,
     "budget":1000,
     "description":"film d'horeur",
