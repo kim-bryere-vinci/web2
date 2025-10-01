@@ -6,37 +6,7 @@ import { isNumber } from "../utils/type-guards";
 const router = Router();
 
 
-const defaultFilms : films[] = [
-    {
-        id: 1, 
-        title: "Harry potter", 
-        director: "Kim BRYERE", 
-        duration: 120
-    },
-    {
-        id: 2, 
-        title: "Friends", 
-        director: "Lauren warren", 
-        duration: 190
-    },
-    {
-        id: 3, 
-        title: "It", 
-        director: "J.K Rowling", 
-        duration: 100
-    },
-    {
-        id: 4, 
-        title: "It", 
-        director: "John lorence", 
-        duration: 210
-    }, {
-        id: 5, 
-        title: "Harry potter 2", 
-        director: "Kim BRYERE", 
-        duration: 120
-    }
-];
+
 
 /**
  * READ ALL : lire toutes les ressources de la collection
