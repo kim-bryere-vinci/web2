@@ -1,6 +1,6 @@
 import express from "express";
 
-import filmsRouter from "./routes/films";
+import textesRouter from "./routes/textes";
 
 const app = express();
 
@@ -17,5 +17,6 @@ app.use((req, _res, next) =>{
     }
     next();
 });
-app.use("/films", filmsRouter);
+
+app.use("/textes", textesRouter);
 export default app;

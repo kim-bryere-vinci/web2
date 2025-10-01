@@ -1,12 +1,17 @@
-interface Film {
-  id : number;
-  title : string;
-  director : string;
-  duration : number;
-  budget? : number;
-  description?: string;
-  imageUrl?: string;
-}
-type NewFilms = Omit<Film, "id">;
 
-export type { Film, NewFilms };
+
+enum Level{
+  EASY = "easy",
+  MEDIUM = "medium",
+  HARD = "hard"
+}
+interface Texte{
+  id: string,
+  content: string,
+  level: Level
+}
+
+
+type NewText = Omit<Texte, "id">;
+export {Level};
+export type { Texte, NewText };
