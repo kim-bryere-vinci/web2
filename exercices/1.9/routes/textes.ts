@@ -49,7 +49,7 @@ router.post("/", (req, res) =>{
 
     const texte = createOna({content, level});
     if(texte == undefined){
-        return res.sendStatus(400);
+        return res.sendStatus(409);
     }
 
     return res.json(texte);
@@ -84,6 +84,7 @@ router.put("/:id", (req, res) =>{
     if(!isString(id)) return res.sendStatus(400);
 
     const texte = updateOne(id, { content, level } );
+    if(texte === null) return res.sendStatus(409);
     if(texte === undefined) return res.sendStatus(404);
     return res.json(texte);
 });

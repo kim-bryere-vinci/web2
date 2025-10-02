@@ -44,6 +44,8 @@ function createOna(newTexte: NewText): Texte | undefined{
     const textes = parse(jsonDbPath, defaultText);
 
     const matchintexte = textes.find((text) => text.content.toLocaleLowerCase() === newTexte.content.toLocaleLowerCase());
+    // ici on vérifie si un texte a déjà un contenu qui est similaire a celui de newTexte
+    //pour les comparer on doit mettre tous les deux toLowerCase()
 
     if(matchintexte) return undefined;
 
@@ -64,7 +66,7 @@ function deleteTexte(id: string): Texte | undefined{
     return deletedTexte[0];
 }
 
-function updateOne(id: string, newTexte: NewText): Texte | undefined{
+function updateOne(id: string, newTexte: NewText): Texte | undefined | null{
     const textes = parse(jsonDbPath, defaultText);
     const findTexte = textes.find((texte) => texte.id === id);
 
@@ -72,7 +74,7 @@ function updateOne(id: string, newTexte: NewText): Texte | undefined{
 
     const matchintexte = textes.find((text) => text.content.toLocaleLowerCase() === newTexte.content.toLocaleLowerCase());
 
-    if(matchintexte) return undefined;
+    if(matchintexte) return null;
 
     findTexte.content = newTexte.content;
     findTexte.level = newTexte.level;
