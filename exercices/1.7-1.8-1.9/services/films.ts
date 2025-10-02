@@ -46,13 +46,19 @@ function readAllFilms(filtre: string | undefined): Film[]{
 
     if(durat){
          const duration = Number(durat);
-        filteredFilms = [...films].filter((film) => film.duration >= duration);
+         if(duration > 0) {
+            filteredFilms = [...films].filter((film) => film.duration >= duration);
+         }
     }
     if(sortTitle){
         filteredFilms = [...films].sort((a, b) => a.title.localeCompare(b.title));
+    // trie les films en fonction de leur titre en order alphabétique 
+    //filteredFilms.reverse(); --> si le sens était non alphabétique
     }
     if(sortDuration){
         filteredFilms = [...films].sort((a, b) => a.duration - b.duration);
+    //trie les films en fonction de leur duration en order croissant
+    //filteredFilms.reverse(); si le sens était décroissant 
     }
 
     return filteredFilms.length === 0 ? films : filteredFilms;
@@ -81,7 +87,6 @@ function createFilm(newFilm: NewFilms): Film | undefined{
 
 function deleteFilm(id: number): Film | undefined{
     const films = parse(jsonDbPath, defaultFilms);
-    console.log(films);
     const index = films.findIndex((film) => film.id === id);
 
     if(index === -1) return undefined;
@@ -105,7 +110,7 @@ function updateFilm(id: number, update: Partial<Film>): Film | undefined{
     if(update.imageUrl !== undefined) film.imageUrl = update.imageUrl;
     if(update.title !== undefined) film.title = update.title;
 
-    serialize(jsonDbPath, film);
+    serialize(jsonDbPath, films);
     return film;
 }
 
