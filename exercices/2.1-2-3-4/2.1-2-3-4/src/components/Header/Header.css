@@ -16,7 +16,7 @@
 }
 
 .header-img{
-    object-fit: cover;
+    object-fit: cover; /* mettre en cover */
     display: block;
     height: auto;
     opacity: 0.7;
@@ -24,8 +24,8 @@
 }
 
 .header-contenu{
-    position: absolute;
-    top: 10%;
+    position: absolute;/* mettre une position absolue */
+    top: 10%;/* positionner dans la page */
     left: 30%;
     font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
     font-size: 40px;
