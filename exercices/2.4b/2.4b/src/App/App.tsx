@@ -23,9 +23,7 @@ function App() {
       nom: "Norah",
       age: 22,
       isOnline: false
-    }
-  ]
-  const Users2 = [
+    },
     {
       nom: "Elena",
       age: 24,
@@ -39,37 +37,35 @@ function App() {
     {
       nom: "Jake",
       age: 27,
-      isOnline: true
+      isOnline: false
     },
     {
       nom: "Amy",
       age: 26,
-      isOnline: false
-    }
-  ]
-
-  const Users3 = [
+      isOnline: true
+    },
     {
       nom: "Rosa",
       age: 22,
-      isOnline: true
+      isOnline: false
     },
     {
       nom: "Holt",
       age: 32,
-      isOnline: false
+      isOnline: true
     },
     {
       nom: "Damon",
       age: 21,
-      isOnline: true
+      isOnline: false
     },
     {
       nom: "Hitchcock",
       age: 34,
-      isOnline: false
+      isOnline: true
     }
   ]
+  
   return (
     <div className='box'>
       {Users.map((user) => (
@@ -78,42 +74,13 @@ function App() {
         </p>
         ))}
 
-      {Users2.map((user) => (
-        <p key={user.nom}>
-          <User nom={user.nom} age={user.age} isOnline={user.isOnline}/>
-        </p>
-        ))}
-
-      {Users3.map((user) => (
-        <p key={user.nom}>
-          <User nom={user.nom} age={user.age} isOnline={user.isOnline}/>
-        </p>
-        ))}
-      
-
       {Users.map((user) => (
         <p key={user.nom}>
           <User nom={user.nom} age={user.age} isOnline={user.isOnline}/>
         </p>
         ))}
 
-      {Users2.map((user) => (
-        <p key={user.nom}>
-          <User nom={user.nom} age={user.age} isOnline={user.isOnline}/>
-        </p>
-        ))}
-      
-      {Users3.map((user) => (
-        <p key={user.nom}>
-          <User nom={user.nom} age={user.age} isOnline={user.isOnline}/>
-        </p>
-        ))}
 
-      {Users.map((user) => (
-        <p key={user.nom}>
-          <User nom={user.nom} age={user.age} isOnline={user.isOnline}/>
-        </p>
-        ))}
     </div>
   )
 }

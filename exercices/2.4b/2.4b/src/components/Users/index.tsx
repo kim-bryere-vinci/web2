@@ -8,11 +8,11 @@ interface UsersProps{
 
 const User = (props: UsersProps) => {
     return (
-        <div className="User-object">
+        <div className={`User-object ${props.isOnline ? "online" : "offline"}`}>
             <div className="User-content">
                 <strong className="User-nom">{props.nom}</strong>
                 <p className="User-age">{props.age}</p>
-                <div className={props.isOnline ? "online" : "offline"}>
+                <div className={props.isOnline ? "status-online" : "status-offline"}>
                     {props.isOnline ? "En ligne" : "Hors ligne"}
                 </div>
             </div>
