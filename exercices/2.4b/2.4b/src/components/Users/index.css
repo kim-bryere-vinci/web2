@@ -1,0 +1,25 @@
+.User-object{
+    margin: 10px;
+    padding: 20px;
+    border: solid 3px black ;
+    border-radius: 4px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.User-content{
+    text-align: justify;
+    font-family:Arial, Helvetica, sans-serif;
+    font-size: 20px;
+}
+
+.online{
+    font-weight: bolder;
+    color: #62A632;
+}
+
+.offline{
+    font-weight: bolder;
+    color: #D8434A;
+}
+

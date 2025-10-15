@@ -1,0 +1,12 @@
+
+
+body {
+  margin: 0px;
+  position: absolute;
+}
+
+.box{
+    display: grid;
+    grid-template-columns: repeat(7, 3fr);
+    column-gap: 20px;
+}
