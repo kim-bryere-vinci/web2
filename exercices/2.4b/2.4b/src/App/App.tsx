@@ -1,5 +1,5 @@
 import './App.css'
-import User from '../components/Users/index'
+import UserProps from '../components/Users/index'
 
 function App() {
 
@@ -70,13 +70,13 @@ function App() {
     <div className='box'>
       {Users.map((user) => (
         <p key={user.nom}>
-          <User nom={user.nom} age={user.age} isOnline={user.isOnline}/>
+          <UserProps user={user}/>
         </p>
         ))}
 
       {Users.map((user) => (
         <p key={user.nom}>
-          <User nom={user.nom} age={user.age} isOnline={user.isOnline}/>
+          <UserProps user={user}/>
         </p>
         ))}
 

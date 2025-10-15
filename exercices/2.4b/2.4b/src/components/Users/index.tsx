@@ -1,23 +1,22 @@
+import type { User } from '../Type/User';
 import './index.css'
 
 interface UsersProps{
-    nom: string,
-    age: number,
-    isOnline: boolean
+    user: User
 }
 
-const User = (props: UsersProps) => {
+const UserProps = (props: UsersProps) => {
     return (
-        <div className={`User-object ${props.isOnline ? "online" : "offline"}`}>
+        <div className={`User-object ${props.user.isOnline ? "online" : "offline"}`}>
             <div className="User-content">
-                <strong className="User-nom">{props.nom}</strong>
-                <p className="User-age">{props.age}</p>
-                <div className={props.isOnline ? "status-online" : "status-offline"}>
-                    {props.isOnline ? "En ligne" : "Hors ligne"}
+                <strong className="User-nom">{props.user.nom}</strong>
+                <p className="User-age">{props.user.age}</p>
+                <div className={props.user.isOnline ? "status-online" : "status-offline"}>
+                    {props.user.isOnline ? "En ligne" : "Hors ligne"}
                 </div>
             </div>
         </div>
     )
 }
 
-export default User;
+export default UserProps;
