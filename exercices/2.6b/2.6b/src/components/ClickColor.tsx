@@ -1,17 +1,16 @@
 import { useState } from "react"
 import "./ClickColor.css"
 
-const colors = ["red", "green", "blue", "yellow", "purple"]
+const colors = ["pink", "black", "purple", "blue", "green"];
 
 const ColorBox = () => {
-    const [cuurentColor, setCurrentColor] = useState(0)
+    const [currentColor, setCurentColor] = useState(0);
+
     return(
-        <div className="color-box"
-        style={{backgroundColor: colors[cuurentColor]}}>
-            <button className="color-box-buttom" onClick={() => setCurrentColor((cuurentColor+1)%colors.length)}>
-                {colors[(cuurentColor+1) % colors.length]}
+        <div className="color-box" style={{backgroundColor:colors[currentColor]}}>
+            <button onClick={() => setCurentColor((currentColor +1) % colors.length)}>
+            {colors[currentColor % colors.length]}
             </button>
-            <h3>{colors[cuurentColor]}</h3>
         </div>
     )
 }
