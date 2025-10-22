@@ -1,13 +1,63 @@
-import type { SyntheticEvent } from "react";
+import { useState, type SyntheticEvent } from "react";
 import sound from "../../assets/sounds/Infecticide-11-Pizza-Spinoza.mp3"
 import DrinkCard from "./DrinkCard";
 import DrinkMenu from "./DrinkMenu";
 import PizzaMenu from "./PizzaMenu";
+import type { Pizza } from "../types/Pizza";
 
+const defaultPizzas = [
+  {
+    id: 1,
+    title: "4 fromages",
+    content: "Gruyère, Sérac, Appenzel, Gorgonzola, Tomates",
+  },
+  {
+    id: 2,
+    title: "Vegan",
+    content: "Tomates, Courgettes, Oignons, Aubergines, Poivrons",
+  },
+  {
+    id: 3,
+    title: "Vegetarian",
+    content: "Mozarella, Tomates, Oignons, Poivrons, Champignons, Olives",
+  },
+  {
+    id: 4,
+    title: "Alpage",
+    content: "Gruyère, Mozarella, Lardons, Tomates",
+  },
+  {
+    id: 5,
+    title: "Diable",
+    content: "Tomates, Mozarella, Chorizo piquant, Jalapenos",
+  }
+];
 const Main = () => {
+    const [pizza, setPizza] = useState("");
+    const [description, setDescription] = useState("");
+    const [pizzas, setPizzas] = useState(defaultPizzas);
+
     const handleSubmit= (e: SyntheticEvent) => {
-      const form = e.target as HTMLFormElement;
-      console.log("submit: ", form.pizza.value, form.description.value);
+      e.preventDefault(); 
+      console.log("submit:", pizza, description);
+      const newPizza = {
+        id: nextPizzaId(pizzas), 
+        title: pizza,
+        content: description
+      }
+      setPizzas([...pizzas, newPizza]);
+    }
+
+    const handlePizzaChange = (e: SyntheticEvent) => {
+      const pizzaInput = e.target as HTMLInputElement;
+      console.log("change in pizzaInput", pizzaInput.value);
+      setPizza(pizzaInput.value);
+    }
+
+    const handleDescriptionChange = (e: SyntheticEvent) => {
+      const descriptionInput = e.target as HTMLInputElement;
+      console.log("change in descriptionInput", descriptionInput.value);
+      setDescription(descriptionInput.value);
     }
     return (
       <main>
@@ -16,19 +66,19 @@ const Main = () => {
           Because we love JS, you can also click on the header to stop / start the
           music
         </p>
-        < audio id="audioPlayer" controls autoPlay>
+        < audio id="audioPlayer" controls >
           <source src={sound} type="audio/mpeg"/>
           Your browser does not support the audio element.
         </audio>
-        <PizzaMenu/>
+        <PizzaMenu pizzas={pizzas}/>
 
         <div>
           <br />
           <form onSubmit={handleSubmit}>
             <label htmlFor="pizza">Pizza</label>
-            <input type="text" name="pizza" id="pizza" />
+            <input value={pizza} type="text" name="pizza" id="pizza" onChange={handlePizzaChange}/>
             <label htmlFor="description">Description</label>
-            <input type="text" id="description" name="description"/>
+            <input value={description} type="text" id="description" name="description" onChange={handleDescriptionChange}/>
             <button type="submit">Ajouter</button>
           </form>
         </div>
@@ -51,5 +101,7 @@ const Main = () => {
       </main>
     );
   };
-
+  const nextPizzaId = (pizzas: Pizza[]) => {
+    return pizzas.reduce((maxId, pizza) => Math.max(maxId, pizza.id), 0) +1;
+  }
   export default Main;
