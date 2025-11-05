@@ -1,0 +1,62 @@
+import { type SyntheticEvent, useState } from "react";
+import type { Movie } from "./types";
+
+interface AddMovieFormProps{
+    onMovieAdded: (movie: Movie) => void;
+}
+
+const AddMovieForm = ({onMovieAdded}: AddMovieFormProps) => {
+    const [title, setTitle] = useState("");
+    const [director, setDirector] = useState("");
+    const [duration, setDuration] = useState(0);
+    const [imageUrl, setImageUrl] = useState("");
+    const [description, setDescription] = useState("");
+    const [budget, setBudget] = useState(0);
+
+    const handlesubmit = (e: SyntheticEvent) => {
+        e.preventDefault();
+        //envoie les nouvelles info du film à la méthode parent
+        onMovieAdded({title, director, duration, imageUrl, description, budget});
+
+        //réénitialise les champs pour le prochain submit
+        setTitle("");
+        setDirector("");
+        setDuration(0);
+        setImageUrl("");
+        setDescription("");
+        setBudget(0);
+    }
+
+    return(
+        <form onSubmit={handlesubmit}>
+            <div>
+                <label>Titre : </label>
+                <input type="text" value={title} onChange={(e) => setTitle(e.target.value)} required/>
+            </div>
+            <div>
+                <label>Réalisateur : </label>
+                <input type="text" value={director} onChange={(e) => setDirector(e.target.value)} required/>
+            </div>
+            <div>
+                <label>Duration : </label>
+                <input type="text" value={duration} onChange={(e) => setDuration(parseInt(e.target.value))} required/>
+            </div>
+            <div>
+                <label>Url de l'image : </label>
+                <input type="text" value={imageUrl} onChange={(e) => setImageUrl(e.target.value)} />
+            </div>
+            <div>
+                <label>Description : </label>
+                <input type="text" value={description} onChange={(e) => setDescription(e.target.value)}/>
+            </div>
+            <div>
+                <label>Budget : </label>
+                <input type="text" value={budget} onChange={(e) => setBudget(parseInt(e.target.value))}/>
+            </div>
+            <button type="submit">Ajouter</button>
+        </form>
+    )
+}
+
+export default AddMovieForm;
+
