@@ -1,4 +1,4 @@
-import "./PizzaMenu.css";
+
 import { Pizza } from "../../types";
 import {
   Table,
@@ -7,7 +7,8 @@ import {
   TableContainer,
   TableHead,
   TableRow,
-  Paper
+  Paper,
+  useTheme
 } from "@mui/material"
 
 interface PizzaMenuProps {
@@ -15,9 +16,25 @@ interface PizzaMenuProps {
 }
 
 const PizzaMenu = ({ pizzas }: PizzaMenuProps) => {
+  const theme = useTheme();
   return (
     <TableContainer component={Paper}>
-      <Table>
+      <Table 
+      sx={{
+        minWidth: 500,
+        "& .MuiTableCell-head":{
+          backgroundColor: theme.palette.primary.dark,
+          color: theme.palette.primary.contrastText,
+          fontWeight: "bold",
+        },
+        "& .MuiTableCell-body":{
+          backgroundColor: theme.palette.primary.light,
+          color:"white"
+        },
+        "& .MuiTableCell-root":{
+          border: `1px solid ${theme.palette.secondary.main}`
+        }
+      }}>
         <TableHead>
           <TableRow>
             <TableCell>Pizza</TableCell>

@@ -5,6 +5,7 @@ import {
   CardMedia,
   CardContent,
   Typography,
+  useTheme
 
 } from "@mui/material";
 import { Grid } from "@mui/material"
@@ -16,9 +17,15 @@ interface DrinkMenuProps {
 }
 
 const DrinkMenu : React.FC<DrinkMenuProps> = ({title, drinks}) => {
+  const theme = useTheme();
   return (
    <Container>
-    <Typography variant="h4" gutterBottom>
+    <Typography variant="h4" gutterBottom
+    sx={{
+      color: theme.palette.primary.contrastText,
+      textAlign: "center",
+      marginTop: 2
+    }}>
       {title}
     </Typography>
     <Grid container spacing={3}>

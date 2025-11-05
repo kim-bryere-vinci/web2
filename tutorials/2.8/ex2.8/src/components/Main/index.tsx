@@ -1,7 +1,6 @@
 import { useState } from "react";
 import sound from "../../assets/sounds/Infecticide-11-Pizza-Spinoza.mp3";
 import DrinkMenu from "./DrinkMenu";
-import "./Main.css";
 import PizzaMenu from "./PizzaMenu";
 import { Drink, NewPizza, Pizza } from "../../types";
 import AddPizza from "./AddPizza";
