@@ -8,9 +8,9 @@ function App() {
   return (
     <>
       <div className='image-content'>
-        <RandomDog key={`${refresh}`} />
-        <RandomDog key={`${refresh}`} />
-        <RandomDog key={`${refresh}`} />
+        <RandomDog key={`${refresh}1`} />
+        <RandomDog key={`${refresh}2`} />
+        <RandomDog key={`${refresh}3`} />
       </div>
 
       <div className='buttom'>
