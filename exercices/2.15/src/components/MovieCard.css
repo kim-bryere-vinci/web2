@@ -48,3 +48,27 @@
 .card-text strong {
   color: #5e4b56; /* gris rosé du header */
 }
+
+  /* 💜 Bouton “cute” */
+   
+  button {
+    display: inline-block;
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 12px;
+    background: linear-gradient(90deg, #f9d8ec, #e8dff5); /* rose → lavande */
+    color: #5e4b56;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.3s ease;
+    box-shadow: 0 3px 8px rgba(255, 192, 203, 0.4);
+  }
+  
+  /* ✨ Effet au survol */
+  button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 10px rgba(255, 182, 193, 0.5);
+    background: linear-gradient(90deg, #f8c8dc, #e8dff5);
+  }
+  

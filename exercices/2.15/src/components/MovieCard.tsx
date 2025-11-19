@@ -3,11 +3,13 @@ import "./MovieCard.css";
 
 interface MovieCardProps{
     movie: Movie;
+    onMovieDeleted: (movie:Movie) => void;
 }
 
 
 
-const MovieCard = ({movie} : MovieCardProps) => {
+const MovieCard = ({movie, onMovieDeleted} : MovieCardProps) => {
+
     return (
         <div className="card">
             <div className="card-body">
@@ -28,6 +30,7 @@ const MovieCard = ({movie} : MovieCardProps) => {
                 {movie.description && (<p className="card-text">
                     <strong>Description : </strong> {movie.description}
                 </p>)}
+                <button onClick={() => onMovieDeleted(movie)}>Delete</button>
             </div>
         </div>
     )

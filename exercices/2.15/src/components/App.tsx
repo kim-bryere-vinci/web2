@@ -5,7 +5,7 @@ import Header from "./Header";
 import NavBar from "./NavBar";
 import { useEffect, useState } from "react";
 import type { Movie, MovieContext, NewMovie } from "./types";
-import { addMovie, fetchMovies } from "./films-service";
+import { addMovie, deleteMovie, fetchMovies } from "./films-service";
 
 const App = () => {
   const [movies, setMovies] = useState<Movie[]>([]);
@@ -36,9 +36,22 @@ const App = () => {
     }
   };
 
+  const onMovieDeleted = async (movie: Movie) => {
+    console.log("Movie to delete:", movie);
+    try{
+      const movietoDelete = await deleteMovie(movie);
+      console.log("Movie deleted : ", movietoDelete);
+      await initMovies();
+      navigate("/movie-list");
+    }catch (error) {
+      console.error(error);
+    }
+  }
+
   const movieContext: MovieContext = {
     movies,
     onMovieAdded,
+    onMovieDeleted
   };
 
   return (

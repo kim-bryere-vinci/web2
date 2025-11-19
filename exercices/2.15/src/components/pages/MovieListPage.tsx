@@ -6,12 +6,12 @@ import type { MovieContext } from "../types";
 
 
 const MovieListPage = () => {
-   const {movies} : MovieContext = useOutletContext();
+   const {movies, onMovieDeleted} : MovieContext = useOutletContext();
 
     return(
         <div>
             <PageTitle title="My favourite movies : "/>
-            <MovieListView movie={movies}/>
+            <MovieListView movie={movies} onMovieDeleted={onMovieDeleted}/>
             <br />
             <br />
             <br />

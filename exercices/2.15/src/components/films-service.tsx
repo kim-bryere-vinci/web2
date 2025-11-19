@@ -37,4 +37,18 @@ const addMovie = async (movie: NewMovie): Promise<Movie> => {
   }
 };
 
-export { fetchMovies, addMovie };
+const deleteMovie = async (movie: Movie):  Promise<void> => {
+  try{
+    const response = await fetch(`/films/${movie.id}`, {
+      method: "DELETE",
+    })
+    if(!response.ok){
+      throw new Error("Failed to remove movie : " + response.statusText);
+    }
+  } catch (error) {
+    console.error(error);
+    throw error;
+  }
+}
+
+export { fetchMovies, addMovie, deleteMovie };
