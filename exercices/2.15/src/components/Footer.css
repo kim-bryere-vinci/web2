@@ -1,0 +1,50 @@
+/* 🌸 Footer doux et assorti au header */
+.footer {
+    background: linear-gradient(90deg, #f9d8ec, #fce4ec); /* même dégradé rose pâle que le header */
+    color: #5e4b56; /* gris rosé doux pour le texte */
+    text-align: center;
+    padding: 12px 30px;
+  
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    z-index: 100;
+  
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+  
+    border-top: 2px solid #f8c8dc; /* fine bordure rose clair */
+    box-shadow: 0 -2px 8px rgba(255, 182, 193, 0.4); /* ombre douce vers le haut */
+    border-radius: 12px 12px 0 0; /* coins supérieurs arrondis */
+    font-family: "Poppins", "Segoe UI", sans-serif;
+  }
+  
+  /* 🌷 Liens ou texte dans le footer */
+  .footer a {
+    color: #7a5fa5; /* lavande douce (contraste du rose) */
+    text-decoration: none;
+    margin: 0 8px;
+    transition: color 0.25s ease, transform 0.2s ease;
+  }
+  
+  .footer a:hover {
+    color: #5e4b56; /* gris rosé plus foncé au survol */
+    transform: scale(1.05);
+  }
+  
+  /* 🩷 Logo assorti */
+  .footer .logo {
+    height: 50px;
+    border-radius: 12px;
+    background-color: #ffeaf4; /* rose très clair */
+    padding: 6px;
+    box-shadow: 0 2px 6px rgba(255, 192, 203, 0.3);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  
+  .footer .logo:hover {
+    transform: scale(1.05);
+    box-shadow: 0 3px 8px rgba(255, 182, 193, 0.5);
+  }
+  

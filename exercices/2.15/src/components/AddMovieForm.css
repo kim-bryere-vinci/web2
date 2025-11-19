@@ -1,0 +1,80 @@
+/* 🌸 Formulaire pastel doux et centré */
+form {
+    max-width: 600px;
+    margin: 2rem auto;
+    padding: 1.3rem;
+  
+    border: 2px solid #f8c8dc; /* bordure rose clair assortie au header */
+    border-radius: 16px;
+    background: linear-gradient(180deg, #fffdfd, #fff5fa); /* fond blanc rosé */
+    box-shadow: 0 4px 12px rgba(255, 182, 193, 0.25); /* ombre rose légère */
+  
+    font-family: 'Poppins', 'Quicksand', 'Nunito', sans-serif;
+    color: #5e4b56; /* gris rosé doux */
+  }
+  
+  /* 🌷 Espacement entre les champs */
+  form div {
+    margin-bottom: 1rem;
+  }
+  
+  /* 💖 Labels élégants */
+  form label {
+    display: block;
+    margin-bottom: 0.4rem;
+    font-weight: 600;
+    color: #7a5fa5; /* lavande douce */
+    font-size: 0.95rem;
+  }
+  
+  /* 🩷 Champs de saisie doux */
+  form input[type="text"],
+  form input[type="number"],
+  form textarea {
+    width: 100%;
+    padding: 0.6rem 0.75rem;
+    border: 1.5px solid #e8dff5; /* lavande pastel */
+    border-radius: 10px;
+    background-color: #fffafc; /* blanc légèrement rosé */
+    box-sizing: border-box;
+    font-size: 1rem;
+    color: #5e4b56;
+    transition: all 0.3s ease;
+  }
+  
+  /* Effet focus mignon */
+  form input:focus,
+  form textarea:focus {
+    border-color: #f8a6c8; /* rose pastel vif */
+    box-shadow: 0 0 8px rgba(248, 166, 200, 0.3);
+    outline: none;
+  }
+  
+  /* 🪻 Zone de texte */
+  form textarea {
+    height: 120px;
+    resize: vertical;
+  }
+  
+  /* 💜 Bouton “cute” */
+  form button {
+    display: inline-block;
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 12px;
+    background: linear-gradient(90deg, #f9d8ec, #e8dff5); /* rose → lavande */
+    color: #5e4b56;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.3s ease;
+    box-shadow: 0 3px 8px rgba(255, 192, 203, 0.4);
+  }
+  
+  /* ✨ Effet au survol */
+  form button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 10px rgba(255, 182, 193, 0.5);
+    background: linear-gradient(90deg, #f8c8dc, #e8dff5);
+  }
+  

@@ -1,0 +1,27 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', 'Quicksand', 'Nunito', 'Segoe UI', sans-serif; /* fontes cute et modernes */
+    background-color: #fffdfd; /* blanc doux, pas agressif */
+    color: #5e4b56; /* gris rosé doux, cohérent avec ton thème */
+    scroll-behavior: smooth; /* défilement fluide */
+  }
+  
+  /* 🌷 Optionnel : harmoniser les titres */
+  h1, h2, h3, h4 {
+    font-family: 'Poppins', 'Quicksand', 'Nunito', sans-serif;
+    color: #7a5fa5; /* lavande pastel assortie à ta palette */
+    margin-top: 0.6em;
+  }
+  
+  /* 🩵 Liens généraux */
+  a {
+    color: #7a5fa5;
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+  
+  a:hover {
+    color: #f8a6c8; /* rose plus vif au survol */
+  }
+  
