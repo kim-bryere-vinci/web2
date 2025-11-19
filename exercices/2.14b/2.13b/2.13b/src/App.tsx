@@ -1,9 +1,17 @@
 import { useState } from 'react'
 import './App.css'
 import RandomDog from './RandomDog'
+import { useEffect } from 'react';
 
 function App() {
   const [refresh, setRefresh] = useState(false);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setRefresh(dog => !dog);
+    }, 3000)
+    return () =>  clearInterval(interval);
+  }, []);
 
   return (
     <>
@@ -14,9 +22,7 @@ function App() {
       </div>
 
       <div className='buttom'>
-        <button onClick={() => setRefresh(!refresh)}>
-          Refresh Dog Image
-        </button>
+        
       </div>
     </>
   )
