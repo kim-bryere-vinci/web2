@@ -1,0 +1,42 @@
+body {
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(135deg, #f8f9fa, #e3e6ec);
+    font-family: "Poppins", sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+
+  }
+  
+  .dog-content {
+    text-align: center;
+    background-color: white;
+    padding: 2rem;
+    border-radius: 20px;
+
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  }
+  
+  .dog-content h1 {
+    color: #444;
+    margin-bottom: 1.5rem;
+  }
+  
+  .dog-image-card {
+    width: 300px;              /* taille uniforme */
+    height: 300px;
+    object-fit: cover;         /* évite la déformation */
+    border-radius: 20px;       /* bords arrondis */
+    filter: grayscale(100%);   /* noir et blanc */
+    transition: all 0.3s ease; /* animation douce */
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.15);
+  }
+  
+  .dog-image-card:hover {
+    filter: grayscale(0%); /* couleur au survol */
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
+    transform: translateY(-5px); /* léger effet de flottement */
+  }
+  
