@@ -12,15 +12,22 @@ function App() {
   console.log(joke);
 
 
+
+
+   const fetchJoke = () => {
+     fetch("https://v2.jokeapi.dev/joke/Any?type=single")
+     .then((response) => {if(!response.ok) throw new Error(`Fetch error ${response.status} : ${response.statusText}`
+       );
+     return response.json();
+   })
+     .then((joke) => setJoke(joke))
+     .catch((err) => {console.log(err)});
+  };
+
   useEffect(() => {
-    fetch("https://v2.jokeapi.dev/joke/Any?type=single")
-    .then((response) => {if(!response.ok) throw new Error(`Fetch error ${response.status} : ${response.statusText}`
-      );
-    return response.json();
-  })
-    .then((joke) => setJoke(joke))
-    .catch((err) => {console.log(err)});
-  }, [])
+    fetchJoke();
+    setInterval(fetchJoke, 10000);
+  }, []);
 
   return (
     <div className="container">
