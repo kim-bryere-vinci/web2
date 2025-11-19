@@ -7,6 +7,7 @@ import App from "./components/App/index.tsx";
 import HomePage from "./components/pages/HomePage.tsx";
 import AddPizzaPage from "./components/pages/AddPizzaPage.tsx";
 
+
 const router = createBrowserRouter([
   {
     path: "/",

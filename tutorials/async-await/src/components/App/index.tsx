@@ -63,6 +63,24 @@ const App = () => {
   const [actionToBePerformed, setActionToBePerformed] = useState(false);
   const [pizzas, setPizzas] = useState(defaultPizzas);
 
+  const addPizza =  async (newPizza: NewPizza) => {
+    try{
+      const options = {
+        method: "POST",
+        body: JSON.stringify(newPizza),
+        headers:{
+          "Content-type": "application/json"
+        }
+      };
+      const response = await fetch("http://localhost:3000/pizzas", options);
+      if(!response.ok) throw new Error(`fetch error : ${response.status} : ${response.statusText}`);
+      const createdPizza = await response.json();
+      setPizzas((prev) => [...prev, createdPizza]);
+    }catch(err){
+      console.log("AddPizzaPage::error", err);
+    }
+  };
+
   // useEffect(() => {
   //   fetch("http://localhost:3000/pizzas")
   //   .then((response) => {if(!response.ok) 
@@ -75,6 +93,7 @@ const App = () => {
   //     console.error("HomePage::error", error);
   //   });
   // }, []);
+
   useEffect(() =>{
     fetchPizza()
   }, []);
@@ -90,11 +109,12 @@ const App = () => {
     }
   }
 
-
-  const addPizza = (newPizza: NewPizza) => {
-    const pizzaAdded = { ...newPizza, id: nextPizzaId(pizzas) };
-    setPizzas([...pizzas, pizzaAdded]);
-  };
+/*
+   const addPizza = (newPizza: NewPizza) => {
+     const pizzaAdded = { ...newPizza, id: nextPizzaId(pizzas) };
+     setPizzas([...pizzas, pizzaAdded]);
+   };
+ */
 
   const handleHeaderClick = () => {
     setActionToBePerformed(true);
@@ -130,9 +150,9 @@ const App = () => {
   );
 };
 
-const nextPizzaId = (pizzas: Pizza[]) => {
-  const ids = pizzas.map((pizza) => pizza.id);
-  return Math.max(...ids) + 1;
-};
+// const nextPizzaId = (pizzas: Pizza[]) => {
+//   const ids = pizzas.map((pizza) => pizza.id);
+//   return Math.max(...ids) + 1;
+// };
 
 export default App;
