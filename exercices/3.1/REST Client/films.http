@@ -1,0 +1,46 @@
+@baseUrl = http://localhost:3000
+
+### GET all the movies
+GET {{baseUrl}}/films
+
+### GET one film by his id
+GET {{baseUrl}}/films/1
+
+### Login
+# @name admin
+POST {{baseUrl}}/auths/login
+Content-Type: application/json
+
+{
+    "username": "admin",
+    "password": "admin"
+}
+
+### CREATE a new film
+POST {{baseUrl}}/films
+Content-Type: application/json
+Authorization: {{admin.response.body.token}}
+
+{
+    "title": "culpa mia",
+    "director": "Domingo González", 
+    "duration": 120,
+    "imageUrl": "https://m.media-amazon.com/images/I/91CcrfPNjSL.jpg"
+}
+
+### DELETE a film
+DELETE {{baseUrl}}/films/1
+Authorization: {{admin.response.body.token}}
+
+### UPDATE a film
+PUT {{baseUrl}}/films/3
+Content-Type: application/json
+Authorization: {{admin.response.body.token}}
+
+{
+    "title": "culpa nuestra",
+    "director": "Domingo González", 
+    "duration": 130,
+    "imageUrl": "https://m.media-amazon.com/images/M/MV5BNzUyNmUwODItZmZjZi00YWY0LTlhZWYtYTYxMjFjOGJhMzM2XkEyXkFqcGc@._V1_.jpg"
+}
+
