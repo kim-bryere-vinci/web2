@@ -36,5 +36,13 @@ interface Film{
 type NewFilm = Omit<Film, "id">;
 
 
+interface Comments{
+  filmId: number,
+  username: string,
+  comment: string
+}
 
-export type {Film, NewFilm, AuthenticatedUser, User, PotentialUser, AuthenticatedRequest, JwtPayload};
+
+
+
+export type {Film, NewFilm, AuthenticatedUser, User, PotentialUser, AuthenticatedRequest, JwtPayload, Comments};

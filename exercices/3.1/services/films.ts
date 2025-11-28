@@ -4,8 +4,6 @@ import { parse, serialize } from "../utils/json";
 
 const jsonDBPath = path.join(__dirname, "/../data/films.json" );
 
-
-
 const defaultFilms: Film[] = [
     {
         id: 1,
