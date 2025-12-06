@@ -1,0 +1,72 @@
+/* 🌸 Barre de navigation douce et élégante */
+.navbar {
+  background: linear-gradient(90deg, #fce4ec, #f9d8ec);
+  padding: 12px 24px;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(255, 182, 193, 0.4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+  .navbar a {
+    background: linear-gradient(90deg, #f9d8ec, #e8dff5); /* dégradé rose-lavande */
+    color: #5e4b56; /* gris rosé doux */
+    border: none;
+    border-radius: 20px; /* coins arrondis mignons */
+    padding: 8px 18px;
+    margin: 0 6px;
+  
+    font-family: 'Poppins', 'Quicksand', 'Nunito', sans-serif;
+    font-weight: 600;
+    font-size: 0.95rem;
+    text-decoration: none;
+    box-shadow: 0 3px 6px rgba(255, 182, 193, 0.4); /* ombre douce rose */
+    transition: all 0.25s ease;
+  }
+  
+  /* 💕 Effet au survol */
+  .navbar a:hover {
+    transform: scale(1.07);
+    background: linear-gradient(90deg, #f8c8dc, #dcd3f2); /* un peu plus chaud */
+    box-shadow: 0 4px 10px rgba(255, 182, 193, 0.55);
+    color: #5e4b56;
+  }
+  
+  /* 🌷 Si tu veux montrer quel lien est actif */
+  .navbar a.active {
+    background: #f8c8dc;
+    color: #5e4b56;
+    box-shadow: 0 3px 8px rgba(248, 166, 200, 0.5);
+  }
+  
+  .navbar button {
+    background: linear-gradient(90deg, #f9d8ec, #e8dff5); /* dégradé rose → lavande */
+    color: #5e4b56; /* gris rosé doux */
+    border: none;
+    border-radius: 20px; /* coins arrondis mignons */
+    padding: 8px 18px;
+    margin: 0 6px;
+  
+    font-family: 'Poppins', 'Quicksand', 'Nunito', sans-serif;
+    font-weight: 600;
+    font-size: 0.95rem;
+    cursor: pointer;
+    box-shadow: 0 3px 6px rgba(255, 182, 193, 0.4); /* ombre douce rose */
+    transition: all 0.25s ease;
+  }
+  
+  /* 🌷 Effet hover */
+  .navbar button:hover {
+    transform: scale(1.07);
+    background: linear-gradient(90deg, #f8c8dc, #dcd3f2); /* dégradé un peu plus chaud */
+    box-shadow: 0 4px 10px rgba(255, 182, 193, 0.55);
+    color: #5e4b56;
+  }
+  
+  /* 💖 Si tu veux un état “actif” ou “sélectionné” */
+  .navbar button.active {
+    background: #f8c8dc;
+    color: #5e4b56;
+    box-shadow: 0 3px 8px rgba(248, 166, 200, 0.5);
+  }
+  

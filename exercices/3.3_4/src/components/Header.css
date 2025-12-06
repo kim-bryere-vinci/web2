@@ -1,0 +1,33 @@
+/* 🌸 Header doux et esthétique */
+.header {
+  /* gris rosé doux pour le texte */
+    text-align: center;
+    padding: 12px 20px;
+  
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 10px;
+  
+    border-bottom: 2px solid #f8c8dc; /* petite ligne rose clair */
+    box-shadow: 0 2px 8px rgba(255, 182, 193, 0.4); /* ombre rose légère */
+    border-radius: 0 0 12px 12px; /* coins inférieurs arrondis */
+    font-family: "Poppins", "Segoe UI", sans-serif;
+  }
+  
+  /* 🌷 Logo arrondi et doux */
+  .logo {
+    padding: 8px;
+    height: 50px;
+    border-radius: 12px;
+    background-color: #ffeaf4; /* fond rose très clair */
+    box-shadow: 0 2px 6px rgba(255, 192, 203, 0.3);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  
+  /* Petit effet au survol pour le côté “cute” */
+  .logo:hover {
+    transform: scale(1.05);
+    box-shadow: 0 3px 8px rgba(255, 182, 193, 0.5);
+  }
+  

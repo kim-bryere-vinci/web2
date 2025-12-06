@@ -1,0 +1,74 @@
+/* 💜 Carte douce lavande assortie au rose du header */
+.card {
+  padding: 20px;
+  width: 18rem;
+  border: 1px solid #e8dff5; /* lavande pâle */
+  border-radius: 12px;
+  overflow: hidden;
+  background-color: #fdfaff; /* fond presque blanc avec une pointe de lavande */
+  box-shadow: 0 4px 10px rgba(220, 180, 255, 0.25); /* ombre lavande légère */
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  font-family: "Poppins", "Segoe UI", sans-serif;
+}
+
+.card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 14px rgba(200, 160, 255, 0.35); /* effet doux au survol */
+}
+
+.img-card {
+    width: 70%;
+    aspect-ratio: 1 / 1;   /* carré parfait */
+    object-fit: cover;
+    border-bottom: 2px solid #f8c8dc;
+    border-radius: 12px 12px 0 0;
+  }
+/* 🪻 Corps de la carte */
+.card-body {
+  padding: 16px;
+  background-color: #ffffff;
+}
+
+/* 🌷 Titre lavande-rosé */
+.card-title {
+  font-size: 1.25rem;
+  margin-bottom: 8px;
+  color: #7a5fa5; /* lavande douce */
+  font-weight: 600;
+}
+
+/* 🩵 Texte gris clair doux */
+.card-text {
+  font-size: 0.9rem;
+  margin-bottom: 8px;
+  color: #666;
+  line-height: 1.4;
+}
+
+.card-text strong {
+  color: #5e4b56; /* gris rosé du header */
+}
+
+  /* 💜 Bouton “cute” */
+   
+  button {
+    display: inline-block;
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 12px;
+    background: linear-gradient(90deg, #f9d8ec, #e8dff5); /* rose → lavande */
+    color: #5e4b56;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.3s ease;
+    box-shadow: 0 3px 8px rgba(255, 192, 203, 0.4);
+  }
+  
+  /* ✨ Effet au survol */
+  button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 10px rgba(255, 182, 193, 0.5);
+    background: linear-gradient(90deg, #f8c8dc, #e8dff5);
+  }
+  
