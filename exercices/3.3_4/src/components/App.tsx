@@ -6,6 +6,7 @@ import NavBar from "./NavBar";
 import { useEffect, useState } from "react";
 import { type MaybeAuthenticated, type AuthenticatedUser, type Movie, type MovieContext, type NewMovie, type User } from "./types";
 import { addMovie, deleteMovie, fetchMovies } from "../utils/films-service";
+import { clearAuthenticatedUser, getAuthenticatedUser, storeAuthenticatedUser } from "../utils/session";
 
 const App = () => {
   const currentTheme = localStorage.getItem("theme") ?? "dark";
@@ -19,7 +20,7 @@ const App = () => {
       const options = {
         method: "POST", 
         body: JSON.stringify(user),
-        Headers: {
+        headers: {
           "Content-type": "application/json"
         }
       }
@@ -33,11 +34,17 @@ const App = () => {
       const authenticatedUser: AuthenticatedUser = await response.json();
 
       setAuthenticatedUser(authenticatedUser);
+      storeAuthenticatedUser(authenticatedUser);
     }catch(err){
       console.log("loginUser::error", err);
       throw err;
     }
 
+  }
+
+  const clearUser = () => {
+    clearAuthenticatedUser();
+    setAuthenticatedUser(undefined);
   }
 
   const registerUser = async (newUser: User) => {
@@ -59,6 +66,7 @@ const App = () => {
       const createdUser: AuthenticatedUser = await response.json();
 
       setAuthenticatedUser(createdUser);
+      storeAuthenticatedUser(createdUser);
     }catch(err){
       console.log("registerUser::error", err);
       throw err;
@@ -83,12 +91,19 @@ const App = () => {
 
   useEffect(() => {
     initMovies();
+    const authenticatedUser= getAuthenticatedUser();
+    if(authenticatedUser){
+      setAuthenticatedUser(authenticatedUser);
+    }
   }, []);
 
   const onMovieAdded = async (newMovie: NewMovie) => {
     console.log("Movie to add:", newMovie);
     try {
-      const movieToBeAdded = await addMovie(newMovie);
+      if(!authenticatedUser){
+        throw new Error("User is not authenticated");
+      }
+      const movieToBeAdded = await addMovie(newMovie, authenticatedUser);
       console.log("Movie added:", movieToBeAdded);
       await initMovies();
       navigate("/movie-list");
@@ -100,7 +115,10 @@ const App = () => {
   const onMovieDeleted = async (movie: Movie) => {
     console.log("Movie to delete:", movie);
     try{
-      const movietoDelete = await deleteMovie(movie);
+      if(!authenticatedUser){
+        throw new Error("User is not authenticated");
+      }
+      const movietoDelete = await deleteMovie(movie, authenticatedUser);
       console.log("Movie deleted : ", movietoDelete);
       await initMovies();
       navigate("/movie-list");
@@ -114,7 +132,8 @@ const App = () => {
     onMovieAdded,
     onMovieDeleted,
     registerUser,
-    loginUser
+    loginUser,
+    authenticatedUser
   };
 
   return (
@@ -123,7 +142,7 @@ const App = () => {
        theme={theme}
        handleThemeChange={handleThemeChange}>
         <h1>Tous sur les films</h1>
-        <NavBar authenticatedUser={authenticatedUser} />
+        <NavBar authenticatedUser={authenticatedUser} clearUser={clearUser}/>
       </Header>
 
       <main className="page-content">

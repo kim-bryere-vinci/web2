@@ -4,9 +4,10 @@ import type { MaybeAuthenticated } from "./types";
 
 interface NavBarProps {
     authenticatedUser : MaybeAuthenticated;
+    clearUser: () => void;
 }
 
-const NavBar = ({authenticatedUser}: NavBarProps) => {
+const NavBar = ({authenticatedUser, clearUser}: NavBarProps) => {
 
     const navigate = useNavigate();
     if(authenticatedUser){
@@ -14,6 +15,7 @@ const NavBar = ({authenticatedUser}: NavBarProps) => {
             <nav>
                 <button onClick={() => navigate("/movie-list")}>My favourite movies</button>
                 <button onClick={() => navigate("/addMoviePage")}>Add movie</button>
+                <button onClick={() => clearUser()}>Log out</button>
             </nav>
             
         )

@@ -22,10 +22,11 @@ type MaybeAuthenticated = AuthenticatedUser | undefined;
 
 interface MovieContext{
     movies: Movie[];
-    onMovieAdded: (newMovie: NewMovie) => Promise<void>;
-    onMovieDeleted: (movie: Movie) => Promise<void>;
+    onMovieAdded: (newMovie: NewMovie) => void;
+    onMovieDeleted: (movie: Movie) => void;
     registerUser: (newUser: User) => Promise<void>;
     loginUser: (user: User) => Promise<void>;
+    authenticatedUser: MaybeAuthenticated;
 }
 
 type NewMovie = Omit<Movie, "id">;

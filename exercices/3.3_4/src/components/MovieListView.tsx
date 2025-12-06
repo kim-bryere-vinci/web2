@@ -4,7 +4,7 @@ import "./MovieListView.css";
 
 interface MovieListViewProps{
     movie: Movie[];
-    onMovieDeleted: (movie: Movie) => void;
+    onMovieDeleted?: (movie: Movie) => void;
 }
 
 const MovieListView = ({movie, onMovieDeleted}: MovieListViewProps) => {

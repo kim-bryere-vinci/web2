@@ -1,4 +1,4 @@
-import type { Movie, NewMovie } from "../components/types";
+import type { AuthenticatedUser, Movie, NewMovie } from "../components/types";
 
 const fetchMovies = async (): Promise<Movie[]> => {
   try {
@@ -17,12 +17,13 @@ const fetchMovies = async (): Promise<Movie[]> => {
   }
 };
 
-const addMovie = async (movie: NewMovie): Promise<Movie> => {
+const addMovie = async (movie: NewMovie,  authenticatedUser: AuthenticatedUser): Promise<Movie> => {
   try {
     const response = await fetch("/api/films", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
+        Authorization: authenticatedUser.token
       },
       body: JSON.stringify(movie),
     });
@@ -37,10 +38,12 @@ const addMovie = async (movie: NewMovie): Promise<Movie> => {
   }
 };
 
-const deleteMovie = async (movie: Movie):  Promise<void> => {
+const deleteMovie = async (movie: Movie, authenticatedUser: AuthenticatedUser):  Promise<void> => {
   try{
     const response = await fetch(`/api/films/${movie.id}`, {
       method: "DELETE",
+      headers: {
+        Authorization: authenticatedUser.token}
     })
     if(!response.ok){
       throw new Error("Failed to remove movie : " + response.statusText);
