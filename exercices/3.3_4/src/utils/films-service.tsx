@@ -54,4 +54,26 @@ const deleteMovie = async (movie: Movie, authenticatedUser: AuthenticatedUser): 
   }
 }
 
-export { fetchMovies, addMovie, deleteMovie };
+const editMovie = async (movie : Movie, authenticatedUser: AuthenticatedUser) : Promise<void> => {
+  try{
+    const movieToEdit = {...movie, id: undefined};
+    const response = await fetch(`/api/films/${movie.id}`, {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: authenticatedUser.token
+        },
+        body: JSON.stringify(movieToEdit)
+    })
+
+    if(!response.ok)  throw new Error("Failed to edit movie : " + response.statusText);
+
+    const data = await response.json();
+    return data;
+  }catch (error) {
+    console.error(error);
+    throw error;
+  }
+}
+
+export { fetchMovies, addMovie, deleteMovie, editMovie };

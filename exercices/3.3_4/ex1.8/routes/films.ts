@@ -119,7 +119,7 @@ router.delete("/:id", authorize, isAdmin ,(req, res) => {
 });
 
 // Update on or multiple props of a film
-router.patch("/:id", authorize, isAdmin ,(req, res) => {
+router.patch("/edit/:id", authorize, isAdmin ,(req, res) => {
   const id = Number(req.params.id);
 
   if (isNaN(id)) {

@@ -4,11 +4,12 @@ import "./MovieCard.css";
 interface MovieCardProps{
     movie: Movie;
     onMovieDeleted?: (movie:Movie) => void;
+    handleEditMovieRequest?: (movie: Movie) => void;
 }
 
 
 
-const MovieCard = ({movie, onMovieDeleted} : MovieCardProps) => {
+const MovieCard = ({movie, onMovieDeleted, handleEditMovieRequest} : MovieCardProps) => {
 
     return (
         <div className="card">
@@ -32,6 +33,8 @@ const MovieCard = ({movie, onMovieDeleted} : MovieCardProps) => {
                 </p>)}
                 {onMovieDeleted && (
                     <button onClick={() => onMovieDeleted(movie)}>Delete</button>)}
+                {handleEditMovieRequest && (
+                    <button onClick={() => handleEditMovieRequest(movie)}>Edit</button>)}
             </div>
         </div>
     )

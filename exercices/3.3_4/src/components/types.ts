@@ -24,9 +24,11 @@ interface MovieContext{
     movies: Movie[];
     onMovieAdded: (newMovie: NewMovie) => void;
     onMovieDeleted: (movie: Movie) => void;
+    onMovieEdited: (movie: Movie) => void;
     registerUser: (newUser: User) => Promise<void>;
     loginUser: (user: User) => Promise<void>;
     authenticatedUser: MaybeAuthenticated;
+    handleEditMovieRequest: (movie: Movie) => void;
 }
 
 type NewMovie = Omit<Movie, "id">;

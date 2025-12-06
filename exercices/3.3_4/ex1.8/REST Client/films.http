@@ -108,7 +108,7 @@ DELETE {{baseUrl}}/films/2
 Authorization: {{admin.response.body.token}}
 
 ### Update film based on id
-PATCH {{baseUrl}}/films/3
+PATCH {{baseUrl}}/films/edit/3
 Content-Type: application/json
 Authorization: {{admin.response.body.token}}
 
@@ -118,7 +118,7 @@ Authorization: {{admin.response.body.token}}
 }
 
 ### Try to update film based on id with empty param
-PATCH {{baseUrl}}/films/3
+PATCH {{baseUrl}}/films/edit/3
 Content-Type: application/json
 Authorization: {{admin.response.body.token}}
 
@@ -128,7 +128,7 @@ Authorization: {{admin.response.body.token}}
 
 ### Challenge ex1.6 : Try to update film based on id with unexpected param (id)
 
-PATCH {{baseUrl}}/films/3
+PATCH {{baseUrl}}/films/edit/3
 Content-Type: application/json
 Authorization: {{admin.response.body.token}}
 

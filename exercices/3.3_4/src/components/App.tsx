@@ -5,7 +5,7 @@ import Header from "./Header";
 import NavBar from "./NavBar";
 import { useEffect, useState } from "react";
 import { type MaybeAuthenticated, type AuthenticatedUser, type Movie, type MovieContext, type NewMovie, type User } from "./types";
-import { addMovie, deleteMovie, fetchMovies } from "../utils/films-service";
+import { addMovie, deleteMovie, editMovie, fetchMovies } from "../utils/films-service";
 import { clearAuthenticatedUser, getAuthenticatedUser, storeAuthenticatedUser } from "../utils/session";
 
 const App = () => {
@@ -127,13 +127,32 @@ const App = () => {
     }
   }
 
+  const onMovieEdited = async (movie: Movie) => {
+    try{
+      if(!authenticatedUser) throw new Error("User is not authenticated");
+
+      const movieEdited = await editMovie(movie, authenticatedUser);
+      console.log("Movie edited", movieEdited);
+      await initMovies();
+      navigate("/movie-list");
+    }catch (error) {
+      console.error(error);
+    }
+  }
+
+  const handleEditMovieRequest = (movie: Movie) => {
+    navigate(`/movies/${movie.id}/edit`);
+  }
+
   const movieContext: MovieContext = {
     movies,
     onMovieAdded,
     onMovieDeleted,
+    onMovieEdited,
     registerUser,
     loginUser,
-    authenticatedUser
+    authenticatedUser,
+    handleEditMovieRequest
   };
 
   return (
